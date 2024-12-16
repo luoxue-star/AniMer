@@ -1,7 +1,7 @@
 # AniMer
 [**Arxiv**](https://arxiv.org/abs/2412.00837) | [**Project Page**](https://luoxue-star.github.io/AniMer_project_page/) | [**Hugging Face Demo**](https://huggingface.co/spaces/luoxue-star/AniMer)
 
-Code and our CtrlAni3D dataset is coming soon.
+The code and our CtrlAni3D dataset will be available soon.
 
 ## Acknowledgements
 
