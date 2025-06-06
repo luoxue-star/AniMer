@@ -14,7 +14,7 @@ pip install "git+https://github.com/facebookresearch/pytorch3d.git"
 ```
 
 ## Gradio demo
-Downloading the checkpoint folder named AniMer from [here](https://drive.google.com/drive/folders/1xYCJyxZeSYPI6RXnHqa_lDbjnIAs8hVi?usp=sharing) to `data/`. Then you can try our model by:
+Downloading the checkpoint folder named AniMer from [here](https://drive.google.com/drive/folders/1p6ysA247FAOHI867Bb2z7zxa34i-aXnP?usp=drive_link) to `data/`. Then you can try our model by:
 ```bash
 python app.py
 ```
@@ -24,6 +24,13 @@ If you do not want to use gradio app, you can use the following command:
 ```bash
 python demo.py --checkpoint data/AniMer/checkpoints/checkpoint.ckpt --img_folder path/to/imgdir/
 ```
+
+## Acknowledgements
+Parts of the code are borrowed from the following repos:
+- [ViTPose](https://github.com/ViTAE-Transformer/ViTPose)
+- [4DHumans](https://github.com/shubham-goel/4D-Humans)
+- [HaMer](https://github.com/geopavlakos/hamer)
+- [SupContrast](https://github.com/HobbitLong/SupContrast)
 
 ## Citation
 If you find this code useful for your research, please consider citing the following paper:
@@ -38,13 +45,6 @@ If you find this code useful for your research, please consider citing the follo
       url={https://arxiv.org/abs/2412.00837}, 
 }
 ```
-
-## Acknowledgements
-Parts of the code are borrowed from the following repos:
-- [ViTPose](https://github.com/ViTAE-Transformer/ViTPose)
-- [4DHumans](https://github.com/shubham-goel/4D-Humans)
-- [HaMer](https://github.com/geopavlakos/hamer)
-- [SupContrast](https://github.com/HobbitLong/SupContrast)
 
 ## Contact
 For questions about this implementation, please contact [Jin Lyu](lvjin1766@gmail.com) directly. 

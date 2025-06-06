@@ -69,7 +69,7 @@ def inference(img: Dict)-> Tuple[Union[np.ndarray|None], List[str]]:
 
         # Render the result
         input_patch = (batch['img'][0].cpu() * 255 * (DEFAULT_STD[:, None, None]) + (
-                    DEFAULT_MEAN[:, None, None])) / 255.
+                       DEFAULT_MEAN[:, None, None])) / 255.
         input_patch = input_patch.permute(1, 2, 0).numpy()
 
         verts = out['pred_vertices'][0].detach().cpu().numpy()
@@ -78,7 +78,7 @@ def inference(img: Dict)-> Tuple[Union[np.ndarray|None], List[str]]:
         all_cam_t.append(cam_t)
         regression_img = renderer(out['pred_vertices'][0].detach().cpu().numpy(),
                                   out['pred_cam_t'][0].detach().cpu().numpy(),
-                                  batch['img'][0],
+                                  batch['img'][0] * 255,
                                   mesh_base_color=LIGHT_BLUE,
                                   scene_bg_color=(1, 1, 1),
                                     )
@@ -116,7 +116,6 @@ demo = gr.Interface(
     ],
     title="AniMer: Animal Pose and Shape Estimation Using Family Aware Transformer",
     description="""
-    Project page: https://luoxue-star.github.io/AniMer_project_page/
     ## Steps for Use
     1. **Input**: Select an example image or upload your own image.
     2. **Crop**: Crop the animal in the image (Otherwise, the result may be poor.)

@@ -76,7 +76,7 @@ class AMR(pl.LightningModule):
         # Store useful regression outputs to the output dict
         output = {}
         output['cls_token'] = cls
-        output['cls_feats'] = self.class_token_head(cls) if self.cfg.MODEL.BACKBONE.get("USE_CLS", False) else None
+        output['cls_feats'] = self.class_token_head(cls)
 
         output['pred_cam'] = pred_cam
         output['pred_smal_params'] = {k: v.clone() for k, v in pred_smal_params.items()}

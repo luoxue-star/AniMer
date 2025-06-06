@@ -38,17 +38,6 @@ class Discriminator(nn.Module):
         nn.init.xavier_uniform_(self.betas_out.weight)
         nn.init.zeros_(self.betas_out.bias)
 
-        # bones
-        self.bone_fc1 = nn.Linear(24, 10)  # SMAL betas is 41
-        nn.init.xavier_uniform_(self.bone_fc1.weight)
-        nn.init.zeros_(self.bone_fc1.bias)
-        self.bone_fc2 = nn.Linear(10, 5)
-        nn.init.xavier_uniform_(self.bone_fc2.weight)
-        nn.init.zeros_(self.bone_fc2.bias)
-        self.bone_out = nn.Linear(5, 1)
-        nn.init.xavier_uniform_(self.bone_out.weight)
-        nn.init.zeros_(self.bone_out.bias)
-
         # poses_joint
         self.D_alljoints_fc1 = nn.Linear(32 * self.num_joints, 1024)
         nn.init.xavier_uniform_(self.D_alljoints_fc1.weight)
@@ -97,14 +86,6 @@ class Discriminator(nn.Module):
         betas = self.relu(betas)
         betas_out = self.betas_out(betas)
 
-        # bone
-        if bone is not None:
-            bone = self.bone_fc1(bone)
-            bone = self.relu(bone)
-            bone = self.bone_fc2(bone)
-            bone = self.relu(bone)
-            bone_out = self.bone_out(bone)
-
         # poses_joint
         poses = poses.reshape(bn, -1)
         poses_all = self.D_alljoints_fc1(poses)
@@ -113,8 +94,5 @@ class Discriminator(nn.Module):
         poses_all = self.relu(poses_all)
         poses_all_out = self.D_alljoints_out(poses_all)
 
-        if bone is not None:
-            disc_out = torch.cat((poses_out, betas_out, poses_all_out, bone_out), 1)
-        else:
-            disc_out = torch.cat((poses_out, betas_out, poses_all_out), 1)
+        disc_out = torch.cat((poses_out, betas_out, poses_all_out), 1)
         return disc_out

@@ -82,7 +82,7 @@ class ViTDetDataset(torch.utils.data.Dataset):
             img_patch[n_c, :, :] = (img_patch[n_c, :, :] - self.mean[n_c]) / self.std[n_c]
 
         item = {
-            'img': img_patch,
+            'img': img_patch / 255.,
             'animalid': int(self.animalid[idx]),
             'box_center': self.center[idx].copy(),
             'box_size': bbox_size,

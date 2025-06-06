@@ -94,13 +94,13 @@ def main():
                 animal_id = int(batch['animalid'][n])
                 white_img = (torch.ones_like(batch['img'][n]).cpu() - DEFAULT_MEAN[:, None, None] / 255) / (
                             DEFAULT_STD[:, None, None] / 255)
-                input_patch = (batch['img'][n].cpu() * (DEFAULT_STD[:, None, None]) + (
+                input_patch = (batch['img'][n].cpu() * 255 *  (DEFAULT_STD[:, None, None]) + (
                             DEFAULT_MEAN[:, None, None])) / 255.
                 input_patch = input_patch.permute(1, 2, 0).numpy()
 
                 regression_img = renderer(out['pred_vertices'][n].detach().cpu().numpy(),
                                         out['pred_cam_t'][n].detach().cpu().numpy(),
-                                        batch['img'][n],
+                                        batch['img'][n] * 255,
                                         mesh_base_color=LIGHT_BLUE,
                                         scene_bg_color=(1, 1, 1),
                                             )
