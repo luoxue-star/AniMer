@@ -21,7 +21,7 @@ def vith(cfg):
         mlp_ratio=4,
         qkv_bias=True,
         drop_path_rate=0.55,
-        use_cls=cfg.MODEL.BACKBONE.get("USE_CLS", False),
+        use_cls=True,
     )
 
 

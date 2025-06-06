@@ -1,5 +1,6 @@
 import torch
 from typing import Any
+from .mesh_renderer import MeshRenderer
 
 
 def recursive_to(x: Any, target: torch.device):

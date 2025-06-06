@@ -1,0 +1,9 @@
+num_sanity_val_steps: 0
+log_every_n_steps: ${GENERAL.LOG_STEPS}
+val_check_interval: ${GENERAL.VAL_STEPS}  # How often within one training epoch to check the validation set. 
+check_val_every_n_epoch: ${GENERAL.VAL_EPOCHS}  # Check val every n train epochs.
+precision: 16-mixed  # 16-mixed, 32
+max_steps: ${GENERAL.TOTAL_STEPS}
+# move_metrics_to_cpu: True
+limit_val_batches: 80  # How much of validation dataset to check. 
+# track_grad_norm: -1

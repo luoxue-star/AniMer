@@ -1,0 +1,28 @@
+# @package _global_
+
+SMAL:
+  DATA_DIR: data/smal
+  MODEL_PATH: data/smal/my_smpl_00781_4_all.pkl
+  SHAPE_PRIOR_PATH: data/smal/my_smpl_data_00781_4_all.pkl
+  POSE_PRIOR_PATH: data/smal/walking_toy_symmetric_pose_prior_with_cov_35parts.pkl
+  NUM_JOINTS: 34
+
+EXTRA:
+  FOCAL_LENGTH: 1000
+  NUM_LOG_IMAGES: 4
+  NUM_LOG_SAMPLES_PER_IMAGE: 4
+  PELVIS_IND: 0
+
+DATASETS:
+  CONFIG:
+    SCALE_FACTOR: 0.3
+    ROT_FACTOR: 30
+    TRANS_FACTOR: 0.02
+    COLOR_SCALE: 0.2
+    ROT_AUG_RATE: 0.6
+    TRANS_AUG_RATE: 0.5
+    DO_FLIP: False
+    FLIP_AUG_RATE: 0.0
+    EXTREME_CROP_AUG_RATE: 0.0
+    EXTREME_CROP_AUG_LEVEL: 1
+    

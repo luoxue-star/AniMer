@@ -166,4 +166,5 @@ cython_debug/
 # Directory
 demo_out/
 data/AniMer/
-
+data/backbone.pth
+logs/
