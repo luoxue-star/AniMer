@@ -264,11 +264,8 @@ class ViT(nn.Module):
             trunc_normal_(self.pos_embed, std=.02)
 
         self.use_cls = use_cls
-        if use_cls:
-            self.cls_token = nn.Parameter(torch.zeros(1, 1, embed_dim))
-            nn.init.normal_(self.cls_token, std=1e-6)
-        else:
-            self.cls_token = None
+        self.cls_token = nn.Parameter(torch.zeros(1, 1, embed_dim))
+        nn.init.normal_(self.cls_token, std=1e-6)
 
         self._freeze_stages()
 

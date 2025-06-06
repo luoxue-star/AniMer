@@ -63,8 +63,8 @@ MODEL:
 
 DATASETS:
   ANIMAL3D:
-    ROOT_IMAGE: /data/lvjin/data/animal3d/  
+    ROOT_IMAGE: /path/to/animal3d/ 
     JSON_FILE:
-      TRAIN: /data/lvjin/data/animal3d/train.json 
-      TEST: /data/lvjin/data/animal3d/test.json 
+      TRAIN: /path/to/animal3d/train.json
+      TEST: /path/to/animal3d/test.json
     WEIGHT: 1.0

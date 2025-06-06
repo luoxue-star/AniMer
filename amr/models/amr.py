@@ -75,8 +75,7 @@ class AMR(pl.LightningModule):
     def get_parameters(self):
         all_params = list(self.smal_head.parameters())
         all_params += list(self.backbone.parameters())
-        if self.cfg.MODEL.BACKBONE.get("USE_CLS", False):
-            all_params += list(self.class_token_head.parameters())
+        all_params += list(self.class_token_head.parameters())
         return all_params
 
     def configure_optimizers(self):
