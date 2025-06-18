@@ -30,7 +30,7 @@ The reason for this is that we found that the 3D keypoints of the Animal3D datas
 so the version released now is the result of retraining after we fixed it.
 
 ## Training
-Downloading the pretrained backbone from [here](https://drive.google.com/drive/folders/1_S6ZZ6HYQ4ixAiN8m5uZxh0hFUsRNDxG?usp=sharing). Then, processing the data format to be consistent with Animal3D and replacing the training data path in the configs_hydra/experiment/AniMerStagex.yaml file. 
+Downloading the pretrained backbone and CtrlAni3D dataset from [here](https://drive.google.com/drive/folders/1_S6ZZ6HYQ4ixAiN8m5uZxh0hFUsRNDxG?usp=sharing). Then, processing the data format to be consistent with Animal3D and replacing the training data path in the configs_hydra/experiment/AniMerStagex.yaml file. 
 After that, you can train the model using the following command:
 ```bash
 bash train.sh
@@ -46,14 +46,12 @@ Parts of the code are borrowed from the following repos:
 ## Citation
 If you find this code useful for your research, please consider citing the following paper:
 ```bibtex
-@misc{lyu2024animeranimalposeshape,
-      title={AniMer: Animal Pose and Shape Estimation Using Family Aware Transformer}, 
-      author={Jin Lyu and Tianyi Zhu and Yi Gu and Li Lin and Pujin Cheng and Yebin Liu and Xiaoying Tang and Liang An},
-      year={2024},
-      eprint={2412.00837},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2412.00837}, 
+@inproceedings{lyu2025animer,
+  title={AniMer: Animal Pose and Shape Estimation Using Family Aware Transformer},
+  author={Lyu, Jin and Zhu, Tianyi and Gu, Yi and Lin, Li and Cheng, Pujin and Liu, Yebin and Tang, Xiaoying and An, Liang},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={17486--17496},
+  year={2025}
 }
 ```
 
