@@ -36,6 +36,12 @@ After that, you can train the model using the following command:
 bash train.sh
 ```
 
+## Evaluation
+Replace the dataset path in amr/configs_hydra/experiment/default_val.yaml and run the following command: 
+```bash
+python eval.py --config data/AniMer/.hydra/config.yaml --checkpoint data/AniMer/checkpoints/checkpoint.ckpt --dataset DATASETNAME
+```
+
 ## Acknowledgements
 Parts of the code are borrowed from the following repos:
 - [ViTPose](https://github.com/ViTAE-Transformer/ViTPose)

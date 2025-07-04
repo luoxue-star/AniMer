@@ -1,0 +1,22 @@
+# @package _global_
+
+DATASETS:
+  ANIMAL3D:
+    ROOT_IMAGE: path/to/animal3d/
+    JSON_FILE:
+      TEST: path/to/animal3d/test.json
+  CONFIG:
+    SCALE_FACTOR: 0.0
+    ROT_FACTOR: 0
+    TRANS_FACTOR: 0.0
+    COLOR_SCALE: 0.0
+    ROT_AUG_RATE: 0.0
+    TRANS_AUG_RATE: 0.0
+    DO_FLIP: False
+    FLIP_AUG_RATE: 0.0
+    EXTREME_CROP_AUG_RATE: 0.0
+    EXTREME_CROP_AUG_LEVEL: 1
+
+METRIC:
+  PCK_THRESHOLD: [0.10, 0.15]
+    
