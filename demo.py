@@ -55,7 +55,7 @@ def main():
     cfg = detectron2.config.get_cfg()
     cfg.merge_from_file(model_zoo.get_config_file("COCO-Detection/faster_rcnn_X_101_32x8d_FPN_3x.yaml"))
     cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5 
-    cfg.MODEL.WEIGHTS = "https://dl.fbaipublicfiles.com/detectron2/ViTDet/COCO/cascade_mask_rcnn_vitdet_h/f328730692/model_final_f05665.pkl"
+    cfg.MODEL.WEIGHTS = "https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_X_101_32x8d_FPN_3x/139173657/model_final_68b088.pkl" 
     detector = detectron2.engine.DefaultPredictor(cfg)
 
     img_paths = sorted([img for end in args.file_type for img in Path(args.img_folder).glob(end)])
