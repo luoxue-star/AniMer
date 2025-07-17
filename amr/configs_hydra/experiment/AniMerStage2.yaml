@@ -68,3 +68,14 @@ DATASETS:
       TRAIN: /path/to/animal3d/train.json
       TEST: /path/to/animal3d/test.json
     WEIGHT: 1.0
+  CONTROL_ANIMAL3D:
+    ROOT_IMAGE: /path/to/control_animal3d/ 
+    JSON_FILE:
+      TRAIN: /path/to/control_animal3d/train.json
+      TEST: /path/to/control_animal3d/test.json
+    WEIGHT: 0.5
+  ALL_OTHER_2D:
+    ROOT_IMAGE: /path/to/all_other_2d/ 
+    JSON_FILE:
+      TRAIN: /path/to/all_other_2d/train.json
+    WEIGHT: 0.15
