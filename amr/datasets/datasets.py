@@ -55,16 +55,19 @@ class TrainDataset(Dataset):
         mask = np.array(Image.open(os.path.join(self.root_image, data['mask_path'])).convert('L'))
         category_idx = data['supercategory']
         keypoint_2d = np.array(data['keypoint_2d'], dtype=np.float32)
-        keypoint_3d = np.concatenate(
-            (data['keypoint_3d'], np.ones((len(data['keypoint_3d']), 1))), axis=-1).astype(np.float32)
+        if 'keypoint_3d' in data:
+            keypoint_3d = np.concatenate(
+                (data['keypoint_3d'], np.ones((len(data['keypoint_3d']), 1))), axis=-1).astype(np.float32)
+        else:
+            keypoint_3d = np.zeros((len(keypoint_2d), 4), dtype=np.float32)
         bbox = data['bbox']  # [x, y, w, h]
         center = np.array([(bbox[0] * 2 + bbox[2]) // 2, (bbox[1] * 2 + bbox[3]) // 2])
-        pose = np.array(data['pose'], dtype=np.float32)  # [105, ]
-        betas = np.array(data['shape'] + data['shape_extra'], dtype=np.float32)  # [41, ]
-        translation = np.array(data['trans'], dtype=np.float32)  # [3, ]
-        has_pose = np.array(1., dtype=np.float32)
-        has_betas = np.array(1., dtype=np.float32)
-        has_translation = np.array(1., dtype=np.float32)
+        pose = np.array(data['pose'], dtype=np.float32) if 'pose' in data else np.zeros(105, dtype=np.float32)  # [105, ]
+        betas = np.array(data['shape'] + data['shape_extra'], dtype=np.float32) if 'shape' in data else np.zeros(41, dtype=np.float32)  # [41, ]
+        translation = np.array(data['trans'], dtype=np.float32) if 'trans' in data else np.zeros(3, dtype=np.float32)  # [3, ]
+        has_pose = np.array(1., dtype=np.float32) if not (pose.all() == 0) else np.array(0., dtype=np.float32)
+        has_betas = np.array(1., dtype=np.float32) if not (betas.all() == 0) else np.array(0., dtype=np.float32)
+        has_translation = np.array(1., dtype=np.float32) if not (translation.all() == 0) else np.array(0., dtype=np.float32)
         ori_keypoint_2d = keypoint_2d.copy()
         center_x, center_y = center[0], center[1]
         bbox_size = max([bbox[2], bbox[3]])
@@ -73,19 +76,16 @@ class TrainDataset(Dataset):
                        'pose': pose[3:],
                        'betas': betas,
                        'transl': translation,
-                       'bone': np.zeros(24, dtype=np.float32) if 'bone' not in data else data['bone']
                        }
         has_smal_params = {'global_orient': has_pose,
                            'pose': has_pose,
                            'betas': has_betas,
                            'transl': has_translation,
-                           'bone': np.array(1., dtype=np.float32) if 'bone' in data else np.array(0., dtype=np.float32),
                            }
         smal_params_is_axis_angle = {'global_orient': True,
                                      'pose': True,
                                      'betas': False,
                                      'transl': False,
-                                     'bone': False
                                      }
 
         augm_config = copy.deepcopy(self.augm_config)
